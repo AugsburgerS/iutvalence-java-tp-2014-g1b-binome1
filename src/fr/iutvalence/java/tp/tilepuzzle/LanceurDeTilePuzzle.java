@@ -22,10 +22,10 @@ public class LanceurDeTilePuzzle
 		System.out.println("Création de la partie");
 		Joueur joueur = new JoueurClavier();
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
-		Affichage affichage = new AffichageConsole();
+		Affichage affichage = new AffichageGraphique();
 		TilePuzzle partieDeTilePuzzle = new TilePuzzle(joueur, fdp, affichage);
 		System.out.println("Demarrage de la partie");
-		SwingUtilities.invokeLater(new TacheAffichageFenetre());
+		SwingUtilities.invokeLater((Runnable) affichage);
 		partieDeTilePuzzle.jouer();
 		System.out.println("Fin de la partie");
 	}
