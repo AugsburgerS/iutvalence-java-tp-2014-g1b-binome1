@@ -1,5 +1,7 @@
 package fr.iutvalence.java.tp.tilepuzzle;
 
+import javax.swing.SwingUtilities;
+
 /**
  * @author Bouix Loïc et Sanfilippo Max
  */
@@ -23,6 +25,7 @@ public class LanceurDeTilePuzzle
 		Affichage affichage = new AffichageConsole();
 		TilePuzzle partieDeTilePuzzle = new TilePuzzle(joueur, fdp, affichage);
 		System.out.println("Demarrage de la partie");
+		SwingUtilities.invokeLater(new TacheAffichageFenetre());
 		partieDeTilePuzzle.jouer();
 		System.out.println("Fin de la partie");
 	}
