@@ -19,14 +19,12 @@ public class LanceurDeTilePuzzle
 	 */
 	public static void main(String[] args)
 	{
-		System.out.println("Création de la partie");
+		Affichage affichage = new AffichageGraphique();
+		SwingUtilities.invokeLater((Runnable) affichage);
+		
 		Joueur joueur = new JoueurClavier();
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
-		Affichage affichage = new AffichageGraphique();
 		TilePuzzle partieDeTilePuzzle = new TilePuzzle(joueur, fdp, affichage);
-		System.out.println("Demarrage de la partie");
-		SwingUtilities.invokeLater((Runnable) affichage);
 		partieDeTilePuzzle.jouer();
-		System.out.println("Fin de la partie");
 	}
 }
