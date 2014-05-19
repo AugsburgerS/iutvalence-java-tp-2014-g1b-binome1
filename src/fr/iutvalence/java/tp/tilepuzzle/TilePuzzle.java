@@ -31,7 +31,7 @@ public class TilePuzzle
 	public TilePuzzle(Joueur joueur, FabriqueDePlateau fdp, Affichage affichage)
 	{
 		// TODO définir des constantes
-		this.plateau = fdp.obtenirPlateauDefini(3, 3, 10);
+		this.plateau = fdp.obtenirPlateauDefini(4, 4, 10);
 		this.joueur = joueur;
 		this.affichage = affichage;
 	}

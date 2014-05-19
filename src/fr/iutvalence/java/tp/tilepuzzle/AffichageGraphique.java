@@ -1,8 +1,6 @@
 package fr.iutvalence.java.tp.tilepuzzle;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
 
 /**
@@ -14,24 +12,24 @@ public class AffichageGraphique implements Affichage, Runnable
 	 * La fenêtre
 	 */
 	public JFrame fenetre;
-
+	
 	/**
-	 * Le splitpane contenant le plateau
+	 * L'Affichage du plateau
 	 */
-	private JSplitPane splitPanePlateau;
+	private JPanelPlateau jPanelPlateau = new JPanelPlateau();
 
 	@Override
 	public void afficherPlateau(Plateau plateau)
 	{
-		this.initSplitPane();
-		this.splitPanePlateau.add(new AffGraphiquePlateau(this.fenetre, plateau));
-		this.fenetre.getContentPane().add(this.splitPanePlateau);
+		this.run();
+		this.jPanelPlateau.mettreAJour(plateau);
 	}
 
 	@Override
 	public void afficherDemandePosition()
 	{
 		System.out.println("DEMANDE POSITION");
+		//TODO
 	}
 	
 	@Override
@@ -49,21 +47,11 @@ public class AffichageGraphique implements Affichage, Runnable
 		this.fenetre.setSize(600, 600);
 		this.fenetre.setTitle("Tile Puzzle");
 		this.fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
 		this.fenetre.setJMenuBar(new BarreDeMenuTilePuzzle(this.fenetre));
+		this.fenetre.setResizable(false);
+		
+		this.fenetre.getContentPane().add(this.jPanelPlateau);
 		
 		this.fenetre.setVisible(true);
-	}
-	
-	/**
-	 * Initialisation d'un SplitPane
-	 */
-	private void initSplitPane()
-	{
-		this.splitPanePlateau = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		this.splitPanePlateau.setEnabled(false);
-		this.splitPanePlateau.setDividerSize(0);
-		this.splitPanePlateau.setResizeWeight(1.0);
-		this.splitPanePlateau.setBorder(null);
 	}
 }
