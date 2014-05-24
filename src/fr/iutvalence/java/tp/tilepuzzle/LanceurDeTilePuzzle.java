@@ -2,8 +2,10 @@ package fr.iutvalence.java.tp.tilepuzzle;
 
 import javax.swing.SwingUtilities;
 
+import fr.iutvalence.java.tp.tilepuzzle.interfaces.TacheDAffichageTilePuzzle;
+
 /**
- * @author Bouix Loïc et Sanfilippo Max
+ * @author augsburs
  */
 
 /**
@@ -19,12 +21,13 @@ public class LanceurDeTilePuzzle
 	 */
 	public static void main(String[] args)
 	{
-		Affichage affichage = new AffichageGraphique();
-		SwingUtilities.invokeLater((Runnable) affichage);
-		
-		Joueur joueur = new JoueurClavier();
+		TacheDAffichageTilePuzzle tacheDAffichage = new TacheDAffichageTilePuzzle();
+
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
-		TilePuzzle partieDeTilePuzzle = new TilePuzzle(joueur, fdp, affichage);
-		partieDeTilePuzzle.jouer();
+		TilePuzzle partieDeTilePuzzle = new TilePuzzle(fdp, tacheDAffichage);
+		
+		tacheDAffichage.associerControleur(partieDeTilePuzzle);
+		
+		SwingUtilities.invokeLater((Runnable) tacheDAffichage);
 	}
 }

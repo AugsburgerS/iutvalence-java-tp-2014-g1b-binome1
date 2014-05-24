@@ -1,8 +1,10 @@
-package fr.iutvalence.java.tp.tilepuzzle;
+package fr.iutvalence.java.tp.tilepuzzle.ihm;
 
 import java.awt.Color;
 
 import javax.swing.JButton;
+
+import fr.iutvalence.java.tp.tilepuzzle.Position;
 
 /**
  * JButton spécifique au TilePuzzle : contenant les coordonnées et l'état du bouton

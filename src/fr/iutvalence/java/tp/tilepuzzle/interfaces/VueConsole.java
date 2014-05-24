@@ -1,12 +1,15 @@
-package fr.iutvalence.java.tp.tilepuzzle;
+package fr.iutvalence.java.tp.tilepuzzle.interfaces;
+
+import fr.iutvalence.java.tp.tilepuzzle.Plateau;
+import fr.iutvalence.java.tp.tilepuzzle.Position;
 
 /**
  * Gere l'affichage dans la console
  */
-public class AffichageConsole implements Affichage
+public class VueConsole implements VueTilePuzzle
 {
 	@Override
-	public void afficherPlateau(Plateau plateau)
+	public void initialiserAffichagePlateau(Plateau plateau)
 	{
 		/**
 		 * Renvoi le contenu du plateau sous forme d'une chaine
@@ -34,10 +37,8 @@ public class AffichageConsole implements Affichage
 	}
 
 	@Override
-	public void afficherDemandePosition()
+	public void mettreAJourPlateau(Plateau plateau)
 	{
-		System.out.println("Position à inverser ?");
-
+		//TODO
 	}
-
 }

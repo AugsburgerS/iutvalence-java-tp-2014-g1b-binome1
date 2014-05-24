@@ -1,4 +1,4 @@
-package fr.iutvalence.java.tp.tilepuzzle;
+package fr.iutvalence.java.tp.tilepuzzle.ihm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

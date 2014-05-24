@@ -1,16 +1,22 @@
-package fr.iutvalence.java.tp.tilepuzzle;
+package fr.iutvalence.java.tp.tilepuzzle.ihm;
 
 import java.awt.GridLayout;
+import java.awt.Desktop.Action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
+
+import fr.iutvalence.java.tp.tilepuzzle.Plateau;
+import fr.iutvalence.java.tp.tilepuzzle.Position;
+import fr.iutvalence.java.tp.tilepuzzle.interfaces.ControleTilePuzzle;
 
 /**
  * @author augsburs
  * Gestion de l'affichage d'un plateau de TilePuzzle
  */
 @SuppressWarnings("serial")
-public class JPanelPlateau extends JPanel implements ActionListener
+public class JPanelPlateau extends JPanel
 {
 	
 	/**
@@ -27,17 +33,19 @@ public class JPanelPlateau extends JPanel implements ActionListener
 	 * La largeur du plateau
 	 */
 	private int largeur;
-	
+
 	/**
-	 * Si la première initialisation du plateau a été faite
+	 * L'auditeur des boutons du plateau
 	 */
-	private boolean initialise = false;
+	private ActionListener auditeurBoutons;
 	
 	/**
 	 * Affichage du plateau initial
+	 * @param auditeurBoutons L'auditeur des boutons du plateau
 	 */
-	public JPanelPlateau()
+	public JPanelPlateau(ActionListener auditeurBoutons)
 	{
+		this.auditeurBoutons = auditeurBoutons;
 		this.initJPanel();
 	}
 	
@@ -58,7 +66,7 @@ public class JPanelPlateau extends JPanel implements ActionListener
 					boutonCourant = new JButtonTilePuzzle(p, false);
 				
 				boutonCourant.setFocusable(false);
-				boutonCourant.addActionListener(this);
+				boutonCourant.addActionListener(this.auditeurBoutons);
 				boutonCourant.setToolTipText("Cliquez moi !");
 				this.add(boutonCourant);
 			}
@@ -70,22 +78,24 @@ public class JPanelPlateau extends JPanel implements ActionListener
 	 */
 	public void mettreAJour(Plateau plateau)
 	{
-		if (this.initialise == false)
-		{
-			this.plateau = plateau;
-			this.hauteur = this.plateau.obtenirHauteur();
-			this.largeur = this.plateau.obtenirLargeur();
-			this.setLayout(new GridLayout(this.hauteur, this.largeur));
-			
-			this.initBoutonsPlateau();
-			this.initialise = true;
-		}
-		else
-		{
-			this.removeAll();
-			this.initBoutonsPlateau();
-			this.revalidate();
-		}
+		this.removeAll();
+		this.initBoutonsPlateau();
+		this.repaint();
+		this.revalidate();
+	}
+	
+	/**
+	 * Initialisation de l'affichage du plateau
+	 * @param plateau le plateau à afficher pour la première fois
+	 */
+	public void initialiserAffichagePlateau(Plateau plateau)
+	{
+		this.plateau = plateau;
+		this.hauteur = this.plateau.obtenirHauteur();
+		this.largeur = this.plateau.obtenirLargeur();
+		this.setLayout(new GridLayout(this.hauteur, this.largeur));
+		
+		this.initBoutonsPlateau();
 	}
 	
 	/**
@@ -95,11 +105,5 @@ public class JPanelPlateau extends JPanel implements ActionListener
 	{
 		this.setEnabled(false);
 		this.setBorder(null);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0)
-	{
-		// TODO
 	}
 }
