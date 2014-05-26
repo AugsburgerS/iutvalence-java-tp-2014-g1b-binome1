@@ -1,9 +1,12 @@
 package fr.iutvalence.java.tp.tilepuzzle.interfaces;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import fr.iutvalence.java.tp.tilepuzzle.Joueur;
@@ -99,7 +102,46 @@ public class TacheDAffichageTilePuzzle implements VueTilePuzzle, Runnable, Actio
 		this.positionChangee = false;
 		while (!this.positionChangee)
 		{
+			try
+			{
+				Thread.sleep(1);
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return this.position;
+	}
+
+	@Override
+	public void afficherPartieGagnee()
+	{
+		//TODO Proposer une nouvelle partie
+		this.fenetre.dispose();
+		
+		try
+		{
+			Thread.sleep(500);
+		}
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		
+		JFrame partieGagnee = new JFrame();
+		partieGagnee.setSize(600, 623);
+		partieGagnee.setLocationRelativeTo(null);
+		partieGagnee.setTitle("Tile Puzzle");
+		partieGagnee.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		partieGagnee.setResizable(false);
+		
+		JPanel p = new JPanel();
+		p.setAlignmentX(Component.CENTER_ALIGNMENT);
+		p.add(new JLabel("Non, ce n'était pas un bug... Bravo !"));
+		
+		partieGagnee.getContentPane().add(p);
+		
+		partieGagnee.setVisible(true);
 	}
 }

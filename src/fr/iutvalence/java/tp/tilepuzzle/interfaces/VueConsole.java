@@ -41,4 +41,10 @@ public class VueConsole implements VueTilePuzzle
 	{
 		//TODO
 	}
+
+	@Override
+	public void afficherPartieGagnee()
+	{
+		System.out.println("Bravo, vous avez gagné la partie !");
+	}
 }

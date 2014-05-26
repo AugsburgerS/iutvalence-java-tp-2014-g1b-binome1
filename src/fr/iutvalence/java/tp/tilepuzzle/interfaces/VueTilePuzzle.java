@@ -19,4 +19,9 @@ public interface VueTilePuzzle
 	 * @param plateau Le plateau à mettre à jour
 	 */
 	public void mettreAJourPlateau(Plateau plateau);
+
+	/**
+	 * Lorsque la partie a été gagnée !
+	 */
+	public void afficherPartieGagnee();
 }

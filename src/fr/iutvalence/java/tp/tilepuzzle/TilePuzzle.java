@@ -33,7 +33,7 @@ public class TilePuzzle
 	public TilePuzzle(VueTilePuzzle vue, Joueur joueur)
 	{
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
-		this.plateau = fdp.obtenirPlateauDefini(5, 5, 10);
+		this.plateau = fdp.obtenirPlateauDefini(3, 3, 10);
 		this.vue = vue;
 		this.joueur = joueur;
 	}
@@ -75,5 +75,6 @@ public class TilePuzzle
 			this.inverserCasesAutourDe(this.joueur.getPosition(this.plateau.obtenirHauteur(),this.plateau.obtenirLargeur()));
 			this.vue.mettreAJourPlateau(this.plateau);
 		}
+		this.vue.afficherPartieGagnee();
 	}
 }
