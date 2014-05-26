@@ -1,15 +1,13 @@
 package fr.iutvalence.java.tp.tilepuzzle.ihm;
 
 import java.awt.GridLayout;
-import java.awt.Desktop.Action;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import fr.iutvalence.java.tp.tilepuzzle.Plateau;
 import fr.iutvalence.java.tp.tilepuzzle.Position;
-import fr.iutvalence.java.tp.tilepuzzle.interfaces.ControleTilePuzzle;
 
 /**
  * @author augsburs
@@ -54,6 +52,7 @@ public class JPanelPlateau extends JPanel
 	 */
 	private void initBoutonsPlateau()
 	{
+		this.removeAll();
 		for (int ligne = 0; ligne < this.hauteur; ligne++)
 			for (int colonne = 0; colonne < this.largeur; colonne++)
 			{
@@ -70,6 +69,8 @@ public class JPanelPlateau extends JPanel
 				boutonCourant.setToolTipText("Cliquez moi !");
 				this.add(boutonCourant);
 			}
+		this.repaint();
+		this.revalidate();
 	}
 
 	/**

@@ -23,11 +23,10 @@ public class LanceurDeTilePuzzle
 	{
 		TacheDAffichageTilePuzzle tacheDAffichage = new TacheDAffichageTilePuzzle();
 
-		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
-		TilePuzzle partieDeTilePuzzle = new TilePuzzle(fdp, tacheDAffichage);
-		
-		tacheDAffichage.associerControleur(partieDeTilePuzzle);
+		TilePuzzle partieDeTilePuzzle = new TilePuzzle(tacheDAffichage, tacheDAffichage);
 		
 		SwingUtilities.invokeLater((Runnable) tacheDAffichage);
+		
+		partieDeTilePuzzle.jouer();
 	}
 }

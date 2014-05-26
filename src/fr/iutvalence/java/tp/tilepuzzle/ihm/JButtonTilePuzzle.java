@@ -2,6 +2,7 @@ package fr.iutvalence.java.tp.tilepuzzle.ihm;
 
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import fr.iutvalence.java.tp.tilepuzzle.Position;
@@ -39,7 +40,7 @@ public class JButtonTilePuzzle extends JButton
 	 */
 	private void initUI()
 	{
-		this.setBorder(null);
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		if (this.estAllume())
 			this.setBackground(new Color(255, 215, 0));
 		else

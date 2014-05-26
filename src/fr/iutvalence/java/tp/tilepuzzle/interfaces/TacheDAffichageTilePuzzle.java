@@ -6,8 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import fr.iutvalence.java.tp.tilepuzzle.Joueur;
 import fr.iutvalence.java.tp.tilepuzzle.Plateau;
-import fr.iutvalence.java.tp.tilepuzzle.TilePuzzle;
+import fr.iutvalence.java.tp.tilepuzzle.Position;
 import fr.iutvalence.java.tp.tilepuzzle.ihm.BarreDeMenuTilePuzzle;
 import fr.iutvalence.java.tp.tilepuzzle.ihm.JButtonTilePuzzle;
 import fr.iutvalence.java.tp.tilepuzzle.ihm.JPanelPlateau;
@@ -15,7 +16,7 @@ import fr.iutvalence.java.tp.tilepuzzle.ihm.JPanelPlateau;
 /**
  * Gere l'affichage graphique
  */
-public class TacheDAffichageTilePuzzle implements VueTilePuzzle, Runnable, ActionListener
+public class TacheDAffichageTilePuzzle implements VueTilePuzzle, Runnable, ActionListener, Joueur
 {
 	/**
 	 * La fenêtre
@@ -25,12 +26,25 @@ public class TacheDAffichageTilePuzzle implements VueTilePuzzle, Runnable, Actio
 	/**
 	 * L'Affichage du plateau
 	 */
-	private JPanelPlateau jPanelPlateau = new JPanelPlateau(this);
-
+	private JPanelPlateau jPanelPlateau;
+	
 	/**
-	 * Le contrôleur
+	 * La dernière position cliquée
 	 */
-	private ControleTilePuzzle controleur;
+	private Position position;
+	
+	/**
+	 * Si la position a été changée
+	 */
+	private boolean positionChangee;
+	
+	/**
+	 * Création de la tâche d'affichage du TilePuzzle
+	 */
+	public TacheDAffichageTilePuzzle()
+	{
+		this.jPanelPlateau = new JPanelPlateau(this);
+	}
 
 	@Override
 	public void initialiserAffichagePlateau(Plateau plateau)
@@ -57,6 +71,7 @@ public class TacheDAffichageTilePuzzle implements VueTilePuzzle, Runnable, Actio
 	{
 		this.fenetre = new JFrame();
 		this.fenetre.setSize(600, 623);
+		this.fenetre.setLocationRelativeTo(null);
 		this.fenetre.setTitle("Tile Puzzle");
 		this.fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.fenetre.setJMenuBar(new BarreDeMenuTilePuzzle(this.fenetre));
@@ -67,22 +82,24 @@ public class TacheDAffichageTilePuzzle implements VueTilePuzzle, Runnable, Actio
 		this.fenetre.setVisible(true);
 	}
 
-	/**
-	 * Associer un contrôleur
-	 * @param controleur le contrôleur à associer
-	 */
-	public void associerControleur(ControleTilePuzzle controleur)
-	{
-		this.controleur = controleur;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		if (e.getSource() instanceof JButtonTilePuzzle)
 		{
 			JButtonTilePuzzle source = (JButtonTilePuzzle) e.getSource();
-			this.controleur.inverserCasesAutourDe(source.obtenirPosition());
+			this.position = source.obtenirPosition();
+			this.positionChangee = true;
 		}
+	}
+
+	@Override
+	public Position getPosition(int hauteurPlateau, int largeurPlateau)
+	{
+		this.positionChangee = false;
+		while (!this.positionChangee)
+		{
+		}
+		return this.position;
 	}
 }
