@@ -96,8 +96,7 @@ public class BarreDeMenuTilePuzzle extends JMenuBar implements ActionListener, C
 
 		if (itemClique == this.menuItemAPropos)
 		{
-			JOptionPane.showMessageDialog(this.fenetre,"Application développée par Bouix Loïc et Sans Fil Ippo et IHM intégrée par Augsburger Sébastien et son fidèle assistant qui le suit dans tous ses déplacements et travaux : Belle Aurélien ","A propos", JOptionPane.INFORMATION_MESSAGE);
-			return;
+			JOptionPane.showMessageDialog(this.fenetre,"Application développée par Bouix Loïc et San Filippo Max et IHM intégrée par Augsburger Sébastien et Belle Aurélien ","A propos", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		if (itemClique == this.menuItemQuitter)
@@ -109,15 +108,12 @@ public class BarreDeMenuTilePuzzle extends JMenuBar implements ActionListener, C
 		if (itemClique == this.menuItemReinitialiser)
 		{
 			System.out.println("reinit");
-			// if (JOptionPane.showConfirmDialog(this.fenetre,
-			// "Etes-vous sûr ? Vous perdrez la partie en cours.",
-			// "Confirmation", JOptionPane.OK_CANCEL_OPTION,
-			// JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION)
+			//TODO
 		}
 
 		if (itemClique == this.menuItemNouvellePartie)
 		{
-			int[] parametres = this.afficherChoisirParametres();
+			//int[] parametres = this.afficherChoisirParametres();
 			//if (parametres != null)
 				// Créer nouvelle partie avec la largeur/hauteur obtenue
 		}

@@ -33,7 +33,8 @@ public class TilePuzzle
 	public TilePuzzle(VueTilePuzzle vue, Joueur joueur)
 	{
 		FabriqueDePlateau fdp = new FabriqueDePlateauAleatoire();
-		this.plateau = fdp.obtenirPlateauDefini(3, 3, 10);
+		//TODO Définir des constantes
+		this.plateau = fdp.obtenirPlateauDefini(5, 5, 10);
 		this.vue = vue;
 		this.joueur = joueur;
 	}
